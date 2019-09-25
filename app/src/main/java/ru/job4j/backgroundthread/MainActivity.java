@@ -25,6 +25,16 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+//        try {
+//            URL newurl = new URL("http://java.sogeti.nl/JavaBlog/wp-content/uploads/2009/04/android_icon_256.png");
+//            Bitmap mIcon_val = BitmapFactory.decodeStream(newurl.openConnection().getInputStream());
+//            ImageView myImageView = findViewById(R.id.picture);
+//            myImageView.setImageBitmap(mIcon_val);
+//
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+
     }
 
     public void startThread(View view) {
@@ -35,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
         new Thread(runnable).start();
     }
 
-    public void loadImage(View view){
+    public void loadImage(View view) {
         LoadImage load = new LoadImage();
         new Thread(load).start();
     }
@@ -46,11 +56,12 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public class LoadImage implements Runnable {
+        ImageView imageView = findViewById(R.id.picture);
+
         @Override
         public void run() {
             final Bitmap bitmap =
-                    loadImageFromNetwork("http://belgorod.expert/wp-content/uploads/2019/01/img_504589.png");
-            final ImageView imageView = findViewById(R.id.picture);
+                    loadImageFromNetwork("https://icon-icons.com/icons2/2067/PNG/128/saturn_planet_icon_125419.png");
             mainHandler.post(new Runnable() {
                 @Override
                 public void run() {
@@ -90,7 +101,6 @@ public class MainActivity extends AppCompatActivity {
                     runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
-
                             textView.setText("50%");
                         }
                     });

@@ -12,7 +12,9 @@
         android:id="@+id/picture"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:srcCompat="@android:drawable/alert_dark_frame" />
+        app:srcCompat="@android:drawable/alert_dark_frame"
+
+        />
 
     <TextView
         android:id="@+id/textView"
