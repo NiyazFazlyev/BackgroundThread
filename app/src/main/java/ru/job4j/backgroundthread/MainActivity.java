@@ -19,7 +19,7 @@ import java.net.URL;
 public class MainActivity extends AppCompatActivity {
     public final static String TAG = "Main Activity";
     private volatile boolean stopThread = false;
-    private Handler mainHandler = new Handler();
+    private Handler mainHandler = new Handler(Looper.getMainLooper());
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -123,8 +123,9 @@ public class MainActivity extends AppCompatActivity {
             bitmap = BitmapFactory
                     .decodeStream((InputStream) new URL(url)
                             .getContent());
+            Log.d(TAG, "image loaded");
         } catch (Exception e) {
-            e.printStackTrace();
+            Log.d(TAG, "image loaded", e);
         }
         return bitmap;
     }
